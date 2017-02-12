@@ -1,6 +1,6 @@
 <template>
   <div>
-    <v-header></v-header>
+    <v-header :seller="seller"></v-header>
     <div class="tab border-1px">
       <div class="tab-item"><a v-link="{path:'/goods'}">商品</a></div>
       <div class="tab-item"><a v-link="{path:'/ratings'}">评论</a></div>
@@ -10,9 +10,26 @@
   </div>
 </template>
 
-<script>
+<script type="text/ecmascript-6">
   import header from './components/header/header.vue';
+
+  const ERR_OK = 0;
+
   export default {
+    data() {
+      return {
+        seller: {},
+      };
+    },
+    created() {
+      this.$http.get('/api/seller').then((response) => {
+        const resp = response.body;
+        if (resp.errno === ERR_OK) {
+          console.log(resp);
+          this.seller = Object.assign({}, this.seller, resp.data);
+        }
+      });
+    },
     components: {
       'v-header': header,
     },
