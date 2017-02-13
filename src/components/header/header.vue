@@ -41,6 +41,8 @@ export default {
 			padding: 24px 12px 18px 24px
 			.avatar
 				display: inline-block
+				img
+					border-radius: 2px
 			.content
 				display: inline-block
 				margin-left: 16px
@@ -60,4 +62,8 @@ export default {
 						font-size: 16px
 						line-height: 18px
 						font-weight: bold
+				.description
+					margin-bottom: 10px
+					line-height: 12px
+					font-size: 12px	
 </style>
